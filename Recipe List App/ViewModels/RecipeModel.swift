@@ -10,13 +10,16 @@ import Foundation
 
 class RecipeModel: ObservableObject {
     
-    @Published var recipes = [Recipe]()
+    @Published var recipes: [Recipe] = []
     
     init() {
         
         // Create an instance of data service and get the data
-        self.recipes = DataService.getLocalData()
-        
+        /// We can use this same class to get our data.
+        if let localData = self.getLocalData(){
+            self.recipes = localData
+        }
+        print(recipes)
         
     }
     
@@ -79,5 +82,37 @@ class RecipeModel: ObservableObject {
         }
         
         return portion
+    }
+    
+    private func readLocalFile(forName name: String) -> Data? {
+        do {
+            if let bundlePath = Bundle.main.path(forResource: name, ofType: "json"),
+                let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+                return jsonData
+            }
+        } catch {
+            print(error)
+        }
+        
+        return nil
+    }
+    
+    private func parse(jsonData: Data) -> [Recipe]? {
+        do {
+            let decodedData = try JSONDecoder().decode([Recipe].self, from: jsonData)
+            return decodedData
+        } catch {
+            print("decode error\(error.localizedDescription)")
+        }
+        return nil
+    }
+    
+    func getLocalData() -> [Recipe]? {
+        if let localData = self.readLocalFile(forName: "recipes") {
+            if let recipe = self.parse(jsonData: localData){
+                return recipe
+            }
+        }
+        return nil
     }
 }

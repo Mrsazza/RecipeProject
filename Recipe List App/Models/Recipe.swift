@@ -7,9 +7,10 @@
 
 import Foundation
 
-class Recipe: Identifiable, Decodable {
-    
-    var id:UUID?
+class Recipe: Identifiable, Codable {
+    /// Even Though this following line creates warning. We don't need to worry about this one.
+    /// We should not use nested for loop in any circumstances(Which was used in Data Service class to generate id).  As it creates memory and performance issues. Can see Data structure and algorithm for more detail.
+    let id = UUID().uuidString
     var name:String
     var featured:Bool
    // var image2:String
@@ -26,9 +27,8 @@ class Recipe: Identifiable, Decodable {
    
 }
 
-class Ingredient: Identifiable, Decodable {
-
-    var id:UUID?
+class Ingredient: Identifiable, Codable {
+    let id = UUID().uuidString
     var name:String
     var num:Int?
     var denom:Int?
@@ -36,9 +36,8 @@ class Ingredient: Identifiable, Decodable {
    
 }
 
-class Picture: Identifiable, Decodable {
-
-        var id:UUID?
+class Picture: Identifiable, Codable {
+        let id = UUID().uuidString
         var name:String
         var num:Int?
         var directions:[String]

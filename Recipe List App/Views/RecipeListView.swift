@@ -15,46 +15,40 @@ struct RecipeListView: View {
     var body: some View {
         
         NavigationView {
-            
             VStack (alignment: .leading) {
-                
-                
                 Text("Family Recipes")
                     .bold()
                     .padding(.top, 40)
                     .font(Font.custom("Avenir Heavy", size: 24))
-                
-                
                 ScrollView {
                     LazyVStack (alignment: .leading) {
-                        ForEach(model.recipes) { r in
+                        ForEach(model.recipes) { recipe in
                           
                             NavigationLink(
-                                destination: RecipeDetailView(recipe:r),
+                                destination: RecipeDetailView(recipe:recipe),
                                 label: {
                                     
                                     // MARK: Row item
                                     HStack(spacing: 20.0) {
-                                        Image(r.image)
+                                        Image(recipe.image)
                                             .resizable()
                                             .scaledToFill()
                                             .frame(width: 50, height: 50, alignment: .center)
                                             .clipped()
                                             .cornerRadius(5)
                                         VStack(alignment: .leading) {
-                                        Text(r.name)
+                                        Text(recipe.name)
                                             .foregroundColor(.black)
                                             .font(Font.custom("Avenir Heavy", size: 16))
-                                            RecipeHighlights(highlights: r.highlights)
+                                            RecipeHighlights(highlights: recipe.highlights)
                                                 .foregroundColor(.black)
                                                 .multilineTextAlignment(.leading)
                                             
                                         }
                                     }
                                     
-                                })
-                            
-                            
+                                }
+                            )
                         }
                     }
                 }

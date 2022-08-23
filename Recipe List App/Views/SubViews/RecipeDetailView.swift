@@ -77,8 +77,6 @@ struct RecipeDetailView: View {
                 }
                 .padding(.horizontal)
                 
-         
-                
             }
             
         }

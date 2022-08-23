@@ -105,12 +105,11 @@
 		831EE69025B0C76D00BACCDD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FA753B8E28B55D6000B85A5F /* SubViews */,
 				3477076927626DA900C52696 /* HomeScreen.swift */,
 				3490C99926DD3E390013E436 /* RecipeFeaturedView.swift */,
 				831EE68125B0C74D00BACCDD /* RecipeListView.swift */,
-				831EE6C525B0E0A200BACCDD /* RecipeDetailView.swift */,
 				349BE0B826D56881003A6D9F /* RecipeTabView.swift */,
-				34E17F7826EAEFF3009C826D /* RecipeHighlights.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -145,6 +144,15 @@
 				831EE6A625B0CAD000BACCDD /* DataService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		FA753B8E28B55D6000B85A5F /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				34E17F7826EAEFF3009C826D /* RecipeHighlights.swift */,
+				831EE6C525B0E0A200BACCDD /* RecipeDetailView.swift */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
